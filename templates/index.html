@@ -1,0 +1,45 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Data de nascimento</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Apelido</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Acoes</th>
+                </tr>
+            </thead>
+            {% for p in pessoa %}
+            <tbody>
+                <tr>
+                    <td name="nome">{{p.nome}} {{p.sobrenome}}</td>
+                    <td nome="idade">{{p.idade}}</td>
+                    <td nome="data_nascimento">{{p.data_nascimento}}</td>
+                    <td nome="email">{{p.email}}</td>
+                    <td nome="apelido">{{p.apelido}}</td>
+                    <td nome="observervação">{{p.observacao}}</td>
+                    
+                    <td nome="actions">
+                        <a href="/pessoas/register/?id={{ p.id }}">
+                            <button class="btn btn-warning" type="submit">Editar</button>
+                        </a>
+                        <a href="/pessoas/delete/{{ p.id }}">
+                            <button class="btn btn-danger" type="submit">Deletar</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</div>
+
+{%endblock%}

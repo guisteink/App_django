@@ -1,0 +1,76 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">Cadastrar Pessoa</h2>
+        <form enctype="multipart/form-data" action="submit" method="POST" class="m-1 p-2"> {% csrf_token %}
+            <div class="form-group m-1">
+                {% if nome %}
+                <label for="nome">Nome</label>
+                <input name="nome" type="text" class="form-control" id="" value="{{nome}}">
+                {% else %}
+                <label for="nome">Nome *</label>
+                <input name="nome" type="text" class="form-control" id="" value="{{pessoa.nome}}">
+                {% endif %}
+            </div>
+            <div class="form-group m-1">
+                {% if sobrenome %}
+                <label for="sobrenome">Sobrenome</label>
+                <input name="sobrenome" type="text" class="form-control" id="" value="{{sobrenome}}">
+                {% else %}
+                <label for="sobrenome">Sobrenome *</label>
+                <input name="sobrenome" type="text" class="form-control" id="" value="{{pessoa.sobrenome}}">
+                {% endif %}
+            </div>
+
+            <div class="form-group m-1">
+                <label for="email">Email *</label>
+                <input name="email" type="email" class="form-control" id="" value="{{pessoa.email}}">
+            </div>
+
+            <div class="form-group m-1">
+                <label for="idade">Idade *</span></label>
+                <input name="idade" type="number" class="form-control" id="" value="{{pessoa.idade}}">
+            </div>
+
+            <div class="form-group m-1">
+                <label for="data_nascimento">Data de nascimento *</label>
+                <input name="data_nascimento" type="date" class="form-control" id="" value="{{pessoa.data_nascimento}}">
+            </div>
+
+            <div class="form-group m-1">
+                <label for="apelido">Apelido</label>
+                <input name="apelido" type="text" class="form-control" id="" value="{{pessoa.apelido}}">
+            </div>
+
+            <div class="form-group m-1">
+                <label for="observacao">Observação</label>
+                <textarea name="observacao" class="form-control" rows="3" id="" value="{{pessoa.observacao}}"></textarea>
+            </div>
+
+            <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong>{{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit" class="btn btn-primary m-1">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+{%for i in response%}
+<h1>
+    {{i}}
+</h1>
+{%endfor%}
+
+
+{%endblock%}
